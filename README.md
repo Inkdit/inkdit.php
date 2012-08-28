@@ -33,7 +33,7 @@ string.
 
     // ensure that the signing was created recently (PHP 5.3+)
     $t = DateTime::createFromFormat(DateTime::ISO8601, $result['signed_at']);
-    if((time() - $t) > 300)
+    if((time() - $t->getTimestamp()) > 300)
       throw new Exception('This signing was created more than 5 minutes ago!');
 
 At this point, the signing has been validated, you know that the contract has
